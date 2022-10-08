@@ -16,7 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') #initlizi
 
 db = SQLAlchemy(app)
 
-class AppInfoModel(db.Model):
+class AppInfoModel(db.Model):  # model class for mapping db table with attributes 
   id = db.Column(db.Integer, primary_key=True)
   app_name = db.Column(db.VARCHAR(80), unique=True, nullable=False)
   created_on = db.Column(db.TIMESTAMP, nullable=False)
@@ -39,6 +39,8 @@ class AppInfoModel(db.Model):
 
 db.create_all() # creating the tables automatically (if they don't exist) based on the column definion given in models
 
+
+# all the REST calls are mentioned below for CRUD operations
 
 @app.route('/app', methods=['GET']) #GET call for fetching all the apps from db
 def get_all_apps():
